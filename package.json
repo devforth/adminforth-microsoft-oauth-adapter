@@ -12,5 +12,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "adminforth": "^1.13.0",
+    "typescript": "^5.8.2"
+  }
 }
