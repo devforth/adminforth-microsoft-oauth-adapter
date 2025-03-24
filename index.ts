@@ -13,7 +13,7 @@ export default class AdminForthAdapterMicrosoftOauth2 implements OAuth2Adapter {
     }) {
       this.clientID = options.clientID;
       this.clientSecret = options.clientSecret;
-      this.useOpenID = options.useOpenID ?? process.env.OPENID === "true";
+      this.useOpenID = options.useOpenID ?? true;
     }
   
     getAuthUrl(): string {
