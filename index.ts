@@ -74,7 +74,11 @@ export default class AdminForthAdapterMicrosoftOauth2 implements OAuth2Adapter {
     }
 
     getIcon(): string {
-      return `<?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><rect width="24" height="24" fill="#F25022"/><path d="M11 2H2V11H11V2Z" fill="#F25022"/><path d="M22 2H13V11H22V2Z" fill="#7FBA00"/><path d="M11 13H2V22H11V13Z" fill="#00A4EF"/><path d="M22 13H13V22H22V13Z" fill="#FFB900"/></svg>`;
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21" fill="none">
+<path d="M0 0H10V10H0V0Z" fill="#F35325"/>
+<path d="M11 0H21V10H11V0Z" fill="#81BC06"/>
+<path d="M0 11H10V21H0V11Z" fill="#05A6F0"/>
+<path d="M11 11H21V21H11V11Z" fill="#FFBA08"/>
+</svg>`;
     }
 }
