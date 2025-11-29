@@ -5,15 +5,20 @@ export default class AdminForthAdapterMicrosoftOauth2 implements OAuth2Adapter {
     private clientID: string;
     private clientSecret: string;
     private useOpenID: boolean;
+    private useOpenIdConnect: boolean;
 
     constructor(options: {
       clientID: string;
       clientSecret: string;
       useOpenID?: boolean;
+      useOpenIdConnect?: boolean;
     }) {
+      if (options.useOpenID !== undefined ) {
+        console.error("AdminForthAdapterMicrosoftOauth2: 'useOpenID' is deprecated, please use 'useOpenIdConnect' instead");
+      }
       this.clientID = options.clientID;
       this.clientSecret = options.clientSecret;
-      this.useOpenID = options.useOpenID ?? true;
+      this.useOpenIdConnect = (options.useOpenIdConnect || options.useOpenID) ?? true;
     }
   
     getAuthUrl(): string {
@@ -47,7 +52,7 @@ export default class AdminForthAdapterMicrosoftOauth2 implements OAuth2Adapter {
         throw new Error(tokenData.error_description || tokenData.error);
       }
 
-      if (this.useOpenID && tokenData.id_token) {
+      if (this.useOpenIdConnect && tokenData.id_token) {
         try {
           const decodedToken: any = jwtDecode(tokenData.id_token);
           if (decodedToken.email) {
