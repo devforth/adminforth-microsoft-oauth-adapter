@@ -32,7 +32,7 @@ export default class AdminForthAdapterMicrosoftOauth2 implements OAuth2Adapter {
       return `https://login.microsoftonline.com/common/oauth2/v2.0/authorize?${params.toString()}`;
     }
   
-    async getTokenFromCode(code: string, redirect_uri: string): Promise<{ email: string; }> {
+    async getTokenFromCode(code: string, redirect_uri: string): Promise<{ email: string, fullName?: string, profilePictureUrl?: string }> {
       const tokenResponse = await fetch('https://login.microsoftonline.com/common/oauth2/v2.0/token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -75,6 +75,8 @@ export default class AdminForthAdapterMicrosoftOauth2 implements OAuth2Adapter {
   
       return {
         email: userData.mail || userData.userPrincipalName,
+        fullName: userData.displayName,
+        profilePictureUrl: null
       };
     }
 
